@@ -1,0 +1,30 @@
+{% extends 'signups/base.html' %}
+
+{% block title %}Guide{% endblock title %}
+
+{% block body %}
+<h1>Guide</h1>
+<p>We're bringing you a fresh version of our Performances FAQ, previously known as our Live Virtual Concert Guide.</p>
+
+<h2>Before the Performance</h2>
+<p>Please <a class="link" href="{% url 'signups:events' %}">sign up</a> for an event!</p>
+<h2>On Performance Day</h2>
+<p>Arrive to the Streamyard link (provided a few days ahead of the performance) 30 minutes before for a sound
+    check. We want to make sure we'll be able to hear you when you play! For more information on using Streamyard,
+    please visit <a class="link" href="https://support.streamyard.com/hc/en-us/articles/360043291612">Guest
+    instructions – StreamYard</a>.</p>
+<p>When you first join the "broadcast studio", only the hosts will be able to see you. No one will be able to hear
+    you, so you're welcome to warm up before your performance, but we ask that your camera remains on the whole
+    time. We'll provide a YouTube livestream link a few days ahead of time. Share it with your family and friends
+    so our performers can have an audience!</p>
+<p>We'll add you to the broadcast when it's your turn and the host will introduce you, but also introduce yourself!
+    (ex. "Hi everyone! My name is [name], I'm [age] years old, and today I will be performing [piece].") After you
+    play, make sure to bow at the end.</p>
+<h2>After the Performance</h2>
+<p>This activity is worth 1.5 SSL hours on your log, although we are allowed to adjust your hours at our
+    discretion. Share and subscribe to our YouTube channel for other performances!</p>
+<p>If you have friends who'd like to perform, have them fill out the <a class="link"
+    href="https://docs.google.com/forms/d/e/1FAIpQLSdzt0huyi7agFq2pniWlEx-3WV6xJn3WmGej8ug9KV45Rlipg/viewform">Tacy
+    Foundation consent form</a> and attend orientation, and we'd love to have them!</p>
+<p><a class="link" href="{% url 'signups:contact' %}">Let us know</a> if you have any questions, comments, or suggestions!</p>
+{% endblock body %}

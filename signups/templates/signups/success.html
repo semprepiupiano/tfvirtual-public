@@ -1,0 +1,19 @@
+{% extends 'signups/base.html' %}
+
+{% block title %}Success{% endblock title %}
+
+{% block body %}
+<h1>Success!</h1>
+<p>You've signed up for a Tacy Foundation Live Concert. Please arrive at <strong>2:30 p.m.</strong> on the day of your
+    performance for a quick soundcheck before the concert begins at <strong>3:00 p.m.</strong> on YouTube. For more on
+    what to expect at the performance, visit our <a class="link" href="{% url 'signups:guide' %}">Guide</a>.</p>
+<p>Additionally, please remain at the event until we dismiss you. Per Montgomery County Public Schools policy, we are
+    required to log your entrance and exit times and your service learning credit will be adjusted accordingly.</p>
+<p>A reminder email with the Streamyard and YouTube links will be sent the day before the performance.</p>
+<p>If you have any questions, please don't hesitate to <a class="link" href="{% url 'signups:contact' %}">contact
+    us</a>. We're so excited
+    that you're performing with us, and we hope you are too!</p>
+<div class="d-grid gap-2 d-md-block">
+    <a href="{% url 'signups:events' %}" class="btn btn-primary">Return to events</a>
+</div>
+{% endblock body %}

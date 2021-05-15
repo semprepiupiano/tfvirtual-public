@@ -1,0 +1,9 @@
+{% extends 'signups/base.html' %}
+
+{% block title %}Uh oh!{% endblock title %}
+
+{% block body %}
+<h1>Uh oh!</h1>
+<p>{{ error_message }} Please <a class="link" href="{% url 'signups:events' %}">sign up</a> for another event.</p>
+<a href="{% url 'signups:events' %}" class="btn btn-secondary">Back</a>
+{% endblock body %}

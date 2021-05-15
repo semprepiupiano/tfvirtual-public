@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+html {
+  height: 100%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f2f7fc;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  color: #164577;
+}
+
+strong {
+  color: #164577;
+}
+
+.link {
+  color: #164577;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: inset 0 -2px 0 #b1ccef;
+  padding: 0px 1px;
+  transition: background 0.1s cubic-bezier(0.33, 0.66, 0.66, 1);
+}
+
+.link:hover {
+  color: #164577;
+  background: #b1ccef;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: #164577;
+  color: #f2f7fc;
+}
+
+.btn-primary:hover {
+  background-color: #123961;
+}
+
+.navbar-nav .active {
+  font-weight: bold;
+}
+
+#min_field, #sec_field {
+  height: 50%;
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+::-moz-selection {
+  background: #b1ccef;
+}
+
+::selection {
+  background: #b1ccef;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f2f7fc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #164577;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #164577 #f2f7fc;
+}
+
+/*# sourceMappingURL=style.css.map */

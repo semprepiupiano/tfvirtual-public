@@ -1,0 +1,62 @@
+{% extends 'signups/base.html' %}
+
+{% block title %}Event List{% endblock title %}
+
+{% block body %}
+<h1>Events</h1>
+<p>We welcome you to take a look at our past performances and sign up for our future ones!</p>
+<h2>Upcoming Events</h2>
+<p>Sign up below for any of our upcoming Live Virtual Concerts. Signups open 10 days before the event and close 1 day
+    before the event. You must be logged in in order to sign up for an event.</p>
+<p>If you don't have access to the password or you're no longer able to attend an event you signed up for, please <a
+        class="link" href="{% url 'signups:contact' %}">let us know</a>.</p>
+{% if event_list %}
+<div class="row">
+    {% for event in event_list %}
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+        <div class="card shadow border-0 h-100">
+            <div class="card-body">
+                <h3 class="card-title">{{ event.name }}</h3>
+                <p class="card-text">{{ event.date }}</p>
+                {% if request.user.is_authenticated %}
+                {% if event.signups_closed %}
+                <p>Signups are closed.</p>
+                {% elif event.spots_open %}
+                <p>{{ event.signups_remaining }} slot{{ event.signups_remaining|pluralize }} remaining.</p>
+                {% else %}
+                <p>Signups are full.</p>
+                {% endif %}
+                {% endif %}
+                <a href="{% url 'signups:detail' event.id %}"
+                    class="btn {% if request.user.is_authenticated %}btn-primary{% else %}btn-secondary{% endif %}">View
+                    Signups</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No upcoming events are available.</p>
+{% endif %}
+<h2>Past Events</h2>
+<p>Our past performances are always available at our <a class="link"
+        href="https://www.youtube.com/channel/UCAjOt-EIsB0o6PAnfjpNI6Q">YouTube channel</a>. You can view them by date
+    below. Be sure to like, comment, and subscribe!</p>
+{% if past_events %}
+<div class="row">
+    {% for event in past_events %}
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+        <div class="card shadow border-0 h-100">
+            <div class="card-body">
+                <h3 class="card-title">{{ event.name }}</h3>
+                <p class="card-text">{{ event.date }}</p>
+                <a href="{{ event.youtube_link }}" class="btn btn-primary">Watch Now</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No past events are available.</p>
+{% endif %}
+{% endblock body %}

@@ -1,0 +1,107 @@
+{% extends 'signups/base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}Event Signup{% endblock title %}
+
+{% block body %}
+<h1>Signup {{ event.name }}</h1>
+<p>{{ event.date }}</p>
+<p><strong>If multiple players in your household are performing, please fill out a separate entry for each
+    performer.</strong></p>
+<p>* indicates a required field.</p>
+<form class="needs-validation" action="{% url 'signups:signup' event.id %}" method="post" novalidate>
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ form.performer|as_crispy_field }}
+        <div class="invalid-feedback">
+            Please provide a valid name.
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            {{ form.parent_email|as_crispy_field }}
+            <div class="invalid-feedback">
+                Please provide a valid email.
+            </div>
+        </div>
+        <div class="col-md-6">
+            {{ form.performer_email|as_crispy_field }}
+        </div>
+        <div id="emailHelp" class="form-text">We understand that many performers will respond to their emails
+            faster than parents, so we'd like to include them when we contact you. If a performer doesn't
+            have an email or the parent doesn't feel comfortable sharing it, that's okay too! Please just make
+            sure you respond to our emails within a timely fashion.</div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            {{ form.piece|as_crispy_field }}
+            <div class="invalid-feedback">
+                Please provide a piece.
+            </div>
+        </div>
+        <div class="col-md-3">
+            {{ form.composer|as_crispy_field }}
+            <div class="invalid-feedback">
+                Please provide a composer.
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="minutes" class="form-label">Piece Length (minutes only)<span class="asteriskField">*</span></label>
+                {{ form.minutes|as_crispy_field }}
+                <div class="invalid-feedback">
+                    Please provide a valid piece length within 2 to 10 minutes.
+                </div>
+        </div>
+        <div class="col-md-3">
+            {{ form.instrument|as_crispy_field }}
+            <div class="invalid-feedback">
+                Please provide an instrument.
+            </div>
+        </div>
+        <div id="plHelp" class="form-text">Try to aim for pieces between 2 to 6 minutes, although if you have a
+            longer work, we’ll let you know if we have time for it! Sometimes we'll also have time for a second piece,
+            so if you'd like to prepare one, you're more than welcome to. Be sure to let us know in the questions text
+            box below!</div>
+    </div>
+    <div class="mb-3">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="public_domain" value="" aria-describedby="pbHelp"
+                name="public_domain" required>
+            <label class="form-check-label" for="public_domain">My piece is in the public domain.<span
+                    class="asteriskField">*</span></label>
+            <div class="invalid-feedback">
+                Please choose a different piece.
+            </div>
+        </div>
+        <div id="pbHelp" class="form-text">Pieces must be in the public domain. Music typically enters the public
+            domain 95 years after it has been published, or in some cases, 70 years after the death of the creator. If
+            you're not sure if your piece is in the public domain, please search it up online. If you choose a piece
+            that is not in the public domain, we will won't be able to let you perform.</div>
+    </div>
+    <div class="mb-3">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="consent_form" value="" aria-describedby="cfHelp"
+                name="consent_form" required>
+            <label class="form-check-label" for="consent_form">I have filled out the Tacy Foundation consent
+                form.<span class="asteriskField">*</span></label>
+            <div class="invalid-feedback">
+                Please fill out the consent form.
+            </div>
+        </div>
+        <div id="pbHelp" class="form-text">If you haven't, please fill it out now
+            <a class="link"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdzt0huyi7agFq2pniWlEx-3WV6xJn3WmGej8ug9KV45Rlipg/viewform">here</a>.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="questions" class="form-label">Any questions, comments, or concerns?</label>
+        <textarea class="form-control" id="questions" name="questions" rows="4"></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+    <a href="{% url 'signups:detail' event.id %}" class="btn btn-secondary">Cancel</a>
+</form>
+
+<script src="{% static 'signups/validate.js' %}"></script>
+{% endblock body %}

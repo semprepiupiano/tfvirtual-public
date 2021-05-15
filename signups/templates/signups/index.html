@@ -1,0 +1,27 @@
+{% extends 'signups/base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% load static %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-6">
+        <img src="{% static 'signups/tacyheart.png' %}" alt="Tacy Heart!" width="100%" height="auto">
+    </div>
+    <div class="col-md-6 d-flex align-items-start flex-column justify-content-center">
+        <h1>Tacy Foundation Live Concerts</h1>
+        <p>The official website for the Tacy Foundation Live Concerts program.</p>
+    </div>
+</div>
+
+<p>Welcome to the Tacy Foundation! For more information on the Foundation, who we serve, and how we serve, visit
+    our <a class="link" href="https://www.tacyfoundation.org">main website</a>. We serve as a branch of the Tacy
+    Foundation, graciously sponsored by Mrs. Charlotte Holliday. You can find out more <a class="link"
+        href="{% url 'signups:about' %}">about us</a> and our <a class="link"
+        href="{% url 'signups:events' %}">events</a>.</p>
+
+<p>We're so glad that you're interested in performing with us! If you have any questions, please <a class="link"
+        href="{% url 'signups:contact' %}">don't hesitate to reach out</a>.</p>
+
+{% endblock body %}

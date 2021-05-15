@@ -1,0 +1,41 @@
+{% extends 'signups/base.html' %}
+
+{% block title %}About{% endblock title %}
+
+{% load static %}
+
+{% block body %}
+<h1>About</h1>
+<h2>Why We Began Live Concerts</h2>
+<p>Many of our volunteers have greatly missed in-person performances for seniors, so we've looked for the next best
+    thing: live recordings of concerts. We started in February 2021, a few months after the Tacy Foundation launched
+    service learning at home during the pandemic, and we've been hosting events weekly ever since. Join us for one on a
+    Saturday afternoon at 3:00 p.m., hosted by a Live Concerts staff member! We welcome all skill levels and
+    instruments, as long as your performance work is in the public domain and ranging from 2 to 6 minutes, although if
+    time permits we can accomodate longer works. If you're interested in performing, please <a class="link"
+        href="{% url 'signups:contact' %}">fill out the form</a>. We're glad to have you join us!</p>
+<p>We utilize a platform called <a class="link" href="https://streamyard.com">Streamyard</a> to bring our performances
+    to YouTube livestreams, and we distribute recordings of the livestream to senior living homes throughout the DMV
+    area where we used to perform in person. One of the great benefits of this platform is that our performers don't
+    need to sign up for any accounts. They can join a link to the "broadcast studio" and perform! We were inspired by
+    the <a class="link" href="https://www.youtube.com/hashtag/nsoathome">NSO @ Home</a> performances to set up such
+    virtual performances in our community.</p>
+
+<p>If you'd like to watch our performances, visit our <a class="link"
+        href="https://www.youtube.com/channel/UCAjOt-EIsB0o6PAnfjpNI6Q">YouTube channel</a>. Be sure to like, comment,
+    and subscribe!</p>
+
+<h2>Live Concerts Staff</h2>
+<div class="row">
+    {% for member in staff %}
+    <div class="col-md-3 col-sm-6 mb-3">
+        <div class="card shadow border-0 h-100">
+            <img src="{{ member.url }}" class="card-img-top" alt="photo of {{ member.name }}">
+            <div class="card-body">
+                <h3 class="card-title text-center">{{ member.name }}</h3>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock body %}

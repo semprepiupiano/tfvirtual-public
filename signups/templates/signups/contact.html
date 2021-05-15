@@ -1,0 +1,43 @@
+{% extends 'signups/base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block body %}
+<h1>Contact</h1>
+<p>Have a question regarding your performance? Check the <a class="link" href="{% url 'signups:contact' %}">Guide</a>
+    before you submit the form below.</p>
+<form class="needs-validation" action="{% url 'signups:contact' %}" method="post" novalidate>
+    {% csrf_token %}
+    <div class="mb-3">
+        {{ form.name|as_crispy_field }}
+        <div class="invalid-feedback">
+            Please provide a valid name.
+        </div>
+    </div>
+    <div class="mb-3">
+        {{ form.email|as_crispy_field }}
+        <div class="invalid-feedback">
+            Please provide a valid email.
+        </div>
+    </div>
+    <div class="mb-3">
+        {{ form.whoami|as_crispy_field }}
+    </div>
+    <div class="mb-3">
+        {{ form.subject|as_crispy_field }}
+    </div>
+    <div class="mb-3">
+        {{ form.questions|as_crispy_field }}
+    </div>
+    <input type="checkbox" name="contact_me_by_fax_only" value="1" style="display:none !important" tabindex="-1"
+        autocomplete="off">
+    <div class="d-grid gap-2 d-md-block">
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+</form>
+
+<script src="{% static 'signups/validate.js' %}"></script>
+{% endblock body %}

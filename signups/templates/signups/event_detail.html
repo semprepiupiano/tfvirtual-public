@@ -1,0 +1,51 @@
+{% extends 'signups/base.html' %}
+
+{% block title %}{{ event.name }}{% endblock title %}
+
+{% block body %}
+
+<h1>{{ event.name }}</h1>
+<p>{{ event.date }}</p>
+
+{% if event.signup_set.count > 0 %}
+{% if performers %}
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        The performance order has been posted below!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <ol class="list-group list-group-numbered shadow mb-3">
+        {% for performer in performers %}
+        <li class="list-group-item d-flex">
+            <div class="ms-2">
+                <div class="fw-bold">{{ performer }}</div>
+                {{ performer.composer }} - {{ performer.piece }}
+            </div>
+        </li>
+        {% endfor %}
+    </ol>
+{% else %}
+    <ul class="list-group shadow mb-3">
+        {% for performer in event.signup_set.all %}
+            <li class="list-group-item">{{ performer }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% endif %}
+
+<div class="d-grid gap-2 d-md-block">
+    {% if event.signups_closed %}
+    <p>Signups are closed for this event.</p>
+    <p>Program length: {{ event.program_length }}.</p>
+    {% elif event.spots_open %}
+    <p>{{ event.signups_remaining }} slot{{ event.signups_remaining|pluralize }} remaining. Current program length: {{ event.program_length }}.</p>
+    <a href="{% url 'signups:signup' event.id %}" class="btn btn-primary">Sign Up</a> 
+    {% else %}
+    <p>Signups are full.</p>
+    <p>Program length: {{ event.program_length }}.</p>
+    {% endif %}
+
+    <a href="{% url 'signups:events' %}" class="btn btn-secondary">Back</a>
+</div>
+
+{% endblock body %}

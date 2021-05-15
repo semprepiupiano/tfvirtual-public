@@ -1,0 +1,10 @@
+{% extends 'signups/base.html' %}
+
+{% block title %}Uh oh!{% endblock title %}
+
+{% block body %}
+<h1>500</h1>
+<h2>That's an error.</h2>
+<p>Oops, something went wrong on our end! Please let us know what you were doing so we can fix it.</p>
+<a href="{% url 'signups:contact' %}" class="btn btn-primary">Contact</a>
+{% endblock body %}

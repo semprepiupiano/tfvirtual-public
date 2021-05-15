@@ -1,0 +1,22 @@
+{% extends 'signups/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Login{% endblock title %}
+
+{% block body %}
+<h1>Login</h1>
+<p>Please log in to sign up or view signups for an event. If you don't remember or have access to the password,
+    please <a class="link" href="{% url 'signups:contact' %}">let us know</a>.</p>
+<p>If you haven't performed with the Tacy Foundation before and you'd like to join us, please visit <a class="link"
+        href="https://www.tacyfoundation.org" target="_blank">tacyfoundation.org</a> to find out how you can
+    participate.</p>
+<form action="{% url 'signups:login' %}{% if next %}?next={{ next }}{% endif %}" method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-auto mb-3">
+            {{ form.password|as_crispy_field }}
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Login</button>
+</form>
+{% endblock body %}
